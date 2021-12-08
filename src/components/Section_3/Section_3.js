@@ -2,7 +2,7 @@ import React from "react";
 import { FaLock } from "react-icons/fa";
 import Country from "../Country/Country";
 
-const Section_3 = ({ register }) => {
+const Section_3 = ({ register, errors }) => {
   return (
     <section id="3" className="">
       <p className="text-2xl text-center">Personal Information</p>
@@ -30,10 +30,14 @@ const Section_3 = ({ register }) => {
           <input
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            id="firstName"
             type="text"
-            {...register("firstName")}
+            {...register("firstName", { required: true })}
           />
+          {errors.firstName && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
         </div>
         <div className="w-full sm:w-1/3 px-3">
           <label
@@ -44,7 +48,6 @@ const Section_3 = ({ register }) => {
           </label>
           <input
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            id="middleName"
             type="text"
             {...register("middleName")}
           />
@@ -59,10 +62,14 @@ const Section_3 = ({ register }) => {
           <input
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            id="lastName"
             type="text"
-            {...register("lastName")}
+            {...register("lastName", { required: true })}
           />
+          {errors.lastName && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
         </div>
       </div>
       <p className="text-xs ml-3">
@@ -77,7 +84,11 @@ const Section_3 = ({ register }) => {
           >
             Country of Residency*
           </label>
-          <Country />
+          <Country
+            register={register}
+            errors={errors}
+            className="residencyCountry"
+          />
           <br />
           <span className="text-xs">What country do you live in?</span>
         </div>
@@ -91,10 +102,14 @@ const Section_3 = ({ register }) => {
           <input
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            {...register("email")}
-            id="email"
+            {...register("email", { required: true })}
             type="email"
           />
+          {errors.email && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
           <span className="text-xs">If possible, enter company email.</span>
         </div>
         <div className="w-full sm:w-1/3 px-3">
@@ -107,10 +122,14 @@ const Section_3 = ({ register }) => {
           <input
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            id="phoneNumber"
-            {...register("phoneNumber")}
+            {...register("phoneNumber", { required: true })}
             type="number"
           />
+          {errors.phoneNumber && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
         </div>
       </div>
     </section>

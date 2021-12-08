@@ -1,7 +1,7 @@
 import React from "react";
 import { FaCircle } from "react-icons/fa";
 
-const Section_4 = ({ register }) => {
+const Section_4 = ({ register, errors }) => {
   return (
     <section id="4" className="">
       <p className="text-center text-2xl font-medium">Select a Company Name</p>
@@ -24,11 +24,14 @@ const Section_4 = ({ register }) => {
           <input
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            name="companyName"
-            id="companyName"
             type="text"
-            ref={register()}
+            {...register("companyName", { required: true })}
           />
+          {errors.companyName && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
         </div>
         <div className="w-full sm:w-1/3 px-3">
           <label
@@ -40,8 +43,7 @@ const Section_4 = ({ register }) => {
           <select
             required
             className="p-2 border-solid border-2 border-gray-300 w-80"
-            name="country"
-            ref={register()}
+            {...register("entityEnding", { required: true })}
           >
             <option value="Choose State "></option>
             <option value="LLC">LLC</option>
@@ -50,6 +52,11 @@ const Section_4 = ({ register }) => {
               Limited Liability Company
             </option>
           </select>
+          {errors.entityEnding && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
         </div>
       </div>
       <div>

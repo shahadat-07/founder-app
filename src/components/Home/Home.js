@@ -17,7 +17,11 @@ import RenderButton from "../utilities/RenderButton";
 
 const Home = () => {
   const [formStep, setFromStep] = useState(1);
-  const { register, watch } = useForm();
+  const {
+    register,
+    watch,
+    formState: { errors, isValid },
+  } = useForm({ mode: "all" });
 
   const completeFormStep = () => {
     setFromStep((current) => current + 1);
@@ -25,7 +29,7 @@ const Home = () => {
   // console.log(watch("firstName"));
 
   return (
-    <div className="min-h-screen bg-green-900 flex flex-col items-start text-gray-900 antialiased relative">
+    <div className="min-h-screen bg-green-900 flex flex-col items-start text-gray-900 antialiased relative pt-20">
       <div
         style={{
           clipPath: "polygon(0 0, 100% 0, 100% 80%, 0% 100%)",
@@ -33,25 +37,44 @@ const Home = () => {
         }}
         className="absolute bg-green-800 inset-x-0 top-0"
       ></div>
-      <div className="mx-auto z-10 mt-40">
+      <div className="mx-auto z-10">
         <img src={Logo} alt="" />
       </div>
       <div className="max-w-3xl w-full mt-10 mb-24 rounded-lg shadow-2xl bg-white mx-auto overflow-hidden z-10">
-        <div className="px-16 py-10">
+        <div className="px-10 py-10">
           <form>
             {formStep === 1 && <WelcomeSection />}
-            {formStep === 2 && <ChooseState register={register} />}
-            {formStep === 3 && <PersonalInformation register={register} />}
-            {formStep === 4 && <SelectCompany register={register} />}
-            {formStep === 5 && <PhysicalOperatingAddress register={register} />}
+            {formStep === 2 && (
+              <ChooseState register={register} errors={errors} />
+            )}
+            {formStep === 3 && (
+              <PersonalInformation register={register} errors={errors} />
+            )}
+            {formStep === 4 && (
+              <SelectCompany register={register} errors={errors} />
+            )}
+            {formStep === 5 && (
+              <PhysicalOperatingAddress register={register} errors={errors} />
+            )}
             {formStep === 6 && <YesNo />}
-            {formStep === 7 && <CompanyBusinessAddress register={register} />}
-            {formStep === 8 && <BusinessDetails register={register} />}
-            {formStep === 9 && <NumberOfShares register={register} />}
-            {formStep === 10 && <OwnerDetails register={register} />}
-            {formStep === 11 && <CompanyManager register={register} />}
+            {formStep === 7 && (
+              <CompanyBusinessAddress register={register} errors={errors} />
+            )}
+            {formStep === 8 && (
+              <BusinessDetails register={register} errors={errors} />
+            )}
+            {formStep === 9 && (
+              <NumberOfShares register={register} errors={errors} />
+            )}
+            {formStep === 10 && (
+              <OwnerDetails register={register} errors={errors} />
+            )}
+            {formStep === 11 && (
+              <CompanyManager register={register} errors={errors} />
+            )}
             {formStep === 12 && <Congratulation />}
             <RenderButton
+              isValid={isValid}
               formStep={formStep}
               completeFormStep={completeFormStep}
             />
