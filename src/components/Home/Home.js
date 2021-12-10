@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaArrowLeft } from "react-icons/fa";
 import Logo from "../../assets/logo.png";
 import Congratulation from "../Congratulation/Congratulation";
 import WelcomeSection from "../Section_1/Section_1";
@@ -14,7 +15,6 @@ import CompanyBusinessAddress from "../Section_7/Section_7";
 import BusinessDetails from "../Section_8/Section_8";
 import NumberOfShares from "../Section_9/Section_9";
 import RenderButton from "../utilities/RenderButton";
-
 const Home = () => {
   const [formStep, setFromStep] = useState(1);
   const {
@@ -26,6 +26,9 @@ const Home = () => {
 
   const completeFormStep = () => {
     setFromStep((current) => current + 1);
+  };
+  const previousState = () => {
+    setFromStep((current) => current - 1);
   };
   // console.log(watch("firstName"));
   const submitForm = (values: any): void => {
@@ -48,6 +51,16 @@ const Home = () => {
       </div>
       <div className="max-w-3xl w-full mt-10 mb-24 rounded-lg shadow-2xl bg-white mx-auto overflow-hidden z-10">
         <div className="px-10 py-10">
+          <div className="">
+            <button
+              onClick={previousState}
+              className="flex opacity-50 hover:opacity-100 mb-4"
+            >
+              {" "}
+              <FaArrowLeft onClick={previousState} className="mt-1 mr-1" />
+              Back
+            </button>
+          </div>
           <form onSubmit={handleSubmit(submitForm)}>
             {formStep === 1 && <WelcomeSection />}
             {formStep === 2 && (
