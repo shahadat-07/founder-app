@@ -27,7 +27,7 @@ const Home = () => {
   const completeFormStep = () => {
     setFromStep((current) => current + 1);
   };
-  const previousState = () => {
+  const goToPreviousState = () => {
     setFromStep((current) => current - 1);
   };
   // console.log(watch("firstName"));
@@ -51,16 +51,16 @@ const Home = () => {
       </div>
       <div className="max-w-3xl w-full mt-10 mb-24 rounded-lg shadow-2xl bg-white mx-auto overflow-hidden z-10">
         <div className="px-10 py-10">
-          <div className="">
+          {formStep > 1 && (
             <button
-              onClick={previousState}
+              onClick={goToPreviousState}
               className="flex opacity-50 hover:opacity-100 mb-4"
             >
               {" "}
-              <FaArrowLeft onClick={previousState} className="mt-1 mr-1" />
+              <FaArrowLeft className="mt-1 mr-1" />
               Back
             </button>
-          </div>
+          )}
           <form onSubmit={handleSubmit(submitForm)}>
             {formStep === 1 && <WelcomeSection />}
             {formStep === 2 && (
