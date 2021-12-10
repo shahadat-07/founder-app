@@ -1,6 +1,6 @@
 import React from "react";
 
-const Section_8 = ({ register }) => {
+const Section_8 = ({ register, errors }) => {
   return (
     <section id="8" className="">
       <p className="text-center text-2xl font-medium">Company Details</p>
@@ -20,9 +20,15 @@ const Section_8 = ({ register }) => {
             required
             className="mb-1 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
             name="productDescription"
-            id="productDescription"
+            {...register("productDescription", { required: true })}
             type="text"
           />
+          {errors.productDescription && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
+          <br />
           <span className="text-xs">
             Please describe in three words or less.
           </span>
@@ -36,10 +42,15 @@ const Section_8 = ({ register }) => {
           <input
             required
             className="mb-1 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            name="productDescription"
-            id="productDescription"
+            {...register("businessDescription", { required: true })}
             type="text"
           />
+          {errors.businessDescription && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
+          <br />
           <span className="text-xs">
             Please describe using more than 50 characters.
           </span>

@@ -13,7 +13,7 @@ const Section_9 = ({ register }) => {
         <label className="font-medium">Amount of Shares*</label>
         <select
           className="p-1 mt-2 rounded-md border-solid border-2 border-gray-300 w-full"
-          name="country"
+          {...register("amountOfShares", { required: true })}
         >
           <option defaultValue value="0">
             0

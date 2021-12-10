@@ -1,10 +1,10 @@
 import React from "react";
 
-const Country = ({ register, errors, className }) => {
+const Country = ({ register, errors, className, width }) => {
   return (
     <>
       <select
-        className="p-1 border-solid border-2 border-gray-300 w-40"
+        className={`p-1 border-solid border-2 border-gray-300 ${width}`}
         {...register(className, { required: true })}
       >
         <option value="Choose State ">Choose State</option>

@@ -45,7 +45,7 @@ const Section_4 = ({ register, errors }) => {
             className="p-2 border-solid border-2 border-gray-300 w-80"
             {...register("entityEnding", { required: true })}
           >
-            <option value="Choose State "></option>
+            <option value="Choose Entity">Choose Entity Ending</option>
             <option value="LLC">LLC</option>
             <option value="L.L.C.">L.L.C.</option>
             <option value="Limited Liability Company">

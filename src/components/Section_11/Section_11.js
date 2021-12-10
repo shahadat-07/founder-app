@@ -1,6 +1,6 @@
 import React from "react";
 
-const Section_11 = ({ register }) => {
+const Section_11 = ({ register, errors }) => {
   return (
     <section id="11" className="">
       <p className="text-center text-xl font-medium">
@@ -18,10 +18,14 @@ const Section_11 = ({ register }) => {
           <input
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            name="ceo"
-            id="ceo"
+            {...register("companyCEO", { required: true })}
             type="text"
           />
+          {errors.companyCEO && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
         </div>
         <div className="w-full sm:w-1/2 px-3">
           <label
@@ -33,10 +37,14 @@ const Section_11 = ({ register }) => {
           <input
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            name="president"
-            id="president"
+            {...register("companyPresident", { required: true })}
             type="text"
           />
+          {errors.companyPresident && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
         </div>
       </div>
       <div className="flex flex-wrap mt-4">
@@ -50,10 +58,14 @@ const Section_11 = ({ register }) => {
           <input
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            name="cfo"
-            id="cfo"
+            {...register("companyCFO", { required: true })}
             type="text"
           />
+          {errors.companyCFO && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
         </div>
         <div className="w-full sm:w-1/2 px-3">
           <label
@@ -65,10 +77,14 @@ const Section_11 = ({ register }) => {
           <input
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            name="state"
-            id="state"
+            {...register("managerState", { required: true })}
             type="text"
           />
+          {errors.managerState && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
         </div>
       </div>
       <div className="mt-4">
@@ -82,8 +98,7 @@ const Section_11 = ({ register }) => {
           <input
             className="mt-2"
             type="file"
-            id="incomeStatement"
-            name="incomeStatement"
+            {...register("incomeStatement", { required: true })}
           />{" "}
         </div>
         <br />
@@ -94,8 +109,7 @@ const Section_11 = ({ register }) => {
           <input
             className="mt-2"
             type="file"
-            id="projectedBalance"
-            name="projectedBalance"
+            {...register("projectedBalance", { required: true })}
           />
         </div>
         <br />
@@ -113,8 +127,7 @@ const Section_11 = ({ register }) => {
           <input
             className="mt-2"
             type="file"
-            id="businessTax"
-            name="businessTax"
+            {...register("businessTax", { required: true })}
           />
         </div>
       </div>

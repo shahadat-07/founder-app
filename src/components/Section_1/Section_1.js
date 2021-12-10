@@ -19,9 +19,12 @@ const Section_1 = () => {
         loans)
       </p>
       <p>⦁ Borrower’s Character</p>
-      <p className="text-sm mt-4">
+      <a
+        href="https://fullerllp.com/privacy-policy/"
+        className="mt-6 text-sm text-red-600 hover:underline hover:text-sm hover:font-medium"
+      >
         By filling the form that follows, you agree to our terms and condition.
-      </p>
+      </a>
     </section>
   );
 };

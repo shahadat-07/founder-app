@@ -1,8 +1,11 @@
 import React from "react";
 import { FaLock } from "react-icons/fa";
-import Country from "../Country/Country";
+// import Country from "../Country/Country";
+import Country from "./../Country/Country";
 
-const Section_10 = ({ register }) => {
+const Section_10 = ({ register, watch, errors }) => {
+  const NumberOfShares = watch("amountOfShares");
+  console.log("Successfull", NumberOfShares);
   return (
     <section id="10" className="">
       <p className="text-2xl text-center font-medium"> Shareholders Details</p>
@@ -29,10 +32,14 @@ const Section_10 = ({ register }) => {
           <input
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            name="firstName"
-            id="firstName"
+            {...register("Owner1firstName", { required: true })}
             type="text"
           />
+          {errors.Owner1firstName && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
         </div>
         <div className="w-full sm:w-1/3 px-3">
           <label
@@ -43,10 +50,14 @@ const Section_10 = ({ register }) => {
           </label>
           <input
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            name="middleName"
-            id="middleName"
+            {...register("Owner1middleName")}
             type="text"
           />
+          {errors.Owner1middleName && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
         </div>
         <div className="w-full sm:w-1/3 px-3">
           <label
@@ -58,10 +69,14 @@ const Section_10 = ({ register }) => {
           <input
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            id="lastName"
-            name="lastName"
+            {...register("Owner1lastName", { required: true })}
             type="text"
           />
+          {errors.Owner1lastName && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
         </div>
       </div>
       <p className="text-xs ml-3">
@@ -76,7 +91,12 @@ const Section_10 = ({ register }) => {
           >
             Country of Residency*
           </label>
-          <Country />
+          <Country
+            register={register}
+            errors={errors}
+            className="Owner1Country"
+            width={"w-full"}
+          />
           <br />
           <span className="text-xs">What country do you live in?</span>
         </div>
@@ -90,10 +110,14 @@ const Section_10 = ({ register }) => {
           <input
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            name="email"
-            id="email"
+            {...register("Owner1Email", { required: true })}
             type="email"
           />
+          {errors.Owner1Email && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
           <span className="text-xs">If possible, enter company email.</span>
         </div>
         <div className="w-full sm:w-1/3 px-3">
@@ -106,25 +130,27 @@ const Section_10 = ({ register }) => {
           <input
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            id="phoneNumber"
-            name="phoneNumber"
+            {...register("Owner1PhoneNumber", { required: true })}
             type="number"
           />
+          {errors.Owner1PhoneNumber && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
         </div>
       </div>
       <div>
         <p className="font-medium">Is Shareholder 18 years old or over? </p>
-        <label class="container">
-          <input className="mr-2" type="radio" checked="checked" name="radio" />
-          Yes
-          <span class="checkmark"></span>
-        </label>{" "}
-        <br />
-        <label class="container">
-          <input className="mr-2" type="radio" name="radio" />
-          No
-          <span class="checkmark"></span>
-        </label>
+        <select
+          required
+          className="p-2 border-solid border-2 border-gray-300 w-full"
+          {...register("shareholderAgeIs18")}
+        >
+          <option value="Select Here">Select Here</option>
+          <option value="YES">YES</option>
+          <option value="NO">NO</option>
+        </select>
       </div>
     </section>
   );

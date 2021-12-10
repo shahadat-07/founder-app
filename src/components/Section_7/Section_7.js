@@ -1,7 +1,7 @@
 import React from "react";
 import Country from "../Country/Country";
 
-const Section_7 = ({ register }) => {
+const Section_7 = ({ register, errors }) => {
   return (
     <section id="7" className="">
       <p className="text-center text-2xl font-medium">
@@ -21,10 +21,14 @@ const Section_7 = ({ register }) => {
           <input
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            name="streetAddrees"
-            id="streetAddrees"
+            {...register("companyBusinessStreetAddress", { required: true })}
             type="text"
           />
+          {errors.companyBusinessStreetAddress && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
           <br />
         </div>
         <div className="w-full sm:w-1/2 px-3">
@@ -37,10 +41,14 @@ const Section_7 = ({ register }) => {
           <input
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            name="streetAddree"
-            id="streetAddree"
+            {...register("companyBusinessSuite", { required: true })}
             type="text"
           />
+          {errors.companyBusinessSuite && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
         </div>
       </div>
       <div className="flex flex-wrap mb-4">
@@ -54,10 +62,14 @@ const Section_7 = ({ register }) => {
           <input
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            name="city"
-            id="city"
+            {...register("companyBusinessCity", { required: true })}
             type="text"
           />
+          {errors.companyBusinessCity && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
           <br />
         </div>
         <div className="w-full sm:w-1/2 px-3">
@@ -65,14 +77,13 @@ const Section_7 = ({ register }) => {
             className="block  tracking-wide text-gray-700 text-xs font-bold mb-2"
             for="grid-last-name"
           >
-            County*
+            Country*
           </label>
-          <input
-            required
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            name="country"
-            id="country"
-            type="text"
+          <Country
+            register={register}
+            errors={errors}
+            className={"companyBusinessCountry"}
+            width={"w-full"}
           />
         </div>
       </div>
@@ -84,7 +95,17 @@ const Section_7 = ({ register }) => {
           >
             State*
           </label>
-          <Country />
+          <input
+            required
+            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
+            {...register("companyBusinessState", { required: true })}
+            type="text"
+          />
+          {errors.companyBusinessState && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
           <br />
         </div>
         <div className="w-full sm:w-1/2 px-3">
@@ -97,10 +118,14 @@ const Section_7 = ({ register }) => {
           <input
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            name="zipCode"
-            id="zipCode"
+            {...register("companyBusinessZipCode", { required: true })}
             type="text"
           />
+          {errors.companyBusinessZipCode && (
+            <span className="text-red-600 font-medium text-sm mt-4">
+              This field is required
+            </span>
+          )}
         </div>
       </div>
     </section>

@@ -20,6 +20,7 @@ const Home = () => {
   const {
     register,
     watch,
+    handleSubmit,
     formState: { errors, isValid },
   } = useForm({ mode: "all" });
 
@@ -27,6 +28,11 @@ const Home = () => {
     setFromStep((current) => current + 1);
   };
   // console.log(watch("firstName"));
+  const submitForm = (values: any): void => {
+    window.alert(JSON.stringify(values, null, 2));
+    console.log(values.incomeStatement[0]);
+    completeFormStep();
+  };
 
   return (
     <div className="min-h-screen bg-green-900 flex flex-col items-start text-gray-900 antialiased relative pt-20">
@@ -42,7 +48,7 @@ const Home = () => {
       </div>
       <div className="max-w-3xl w-full mt-10 mb-24 rounded-lg shadow-2xl bg-white mx-auto overflow-hidden z-10">
         <div className="px-10 py-10">
-          <form>
+          <form onSubmit={handleSubmit(submitForm)}>
             {formStep === 1 && <WelcomeSection />}
             {formStep === 2 && (
               <ChooseState register={register} errors={errors} />
@@ -56,7 +62,7 @@ const Home = () => {
             {formStep === 5 && (
               <PhysicalOperatingAddress register={register} errors={errors} />
             )}
-            {formStep === 6 && <YesNo />}
+            {formStep === 6 && <YesNo register={register} />}
             {formStep === 7 && (
               <CompanyBusinessAddress register={register} errors={errors} />
             )}
@@ -67,19 +73,20 @@ const Home = () => {
               <NumberOfShares register={register} errors={errors} />
             )}
             {formStep === 10 && (
-              <OwnerDetails register={register} errors={errors} />
+              <OwnerDetails register={register} errors={errors} watch={watch} />
             )}
             {formStep === 11 && (
               <CompanyManager register={register} errors={errors} />
             )}
             {formStep === 12 && <Congratulation />}
+
             <RenderButton
               isValid={isValid}
               formStep={formStep}
               completeFormStep={completeFormStep}
             />
-            <pre>{JSON.stringify(watch(), null, 1)}</pre>
           </form>
+          <pre>{JSON.stringify(watch(), null, 2)}</pre>
         </div>
       </div>
     </div>

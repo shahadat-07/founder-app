@@ -1,6 +1,6 @@
 import React from "react";
 
-const Section_6 = () => {
+const Section_6 = ({ register }) => {
   return (
     <section id="6" className="">
       <p className="text-center text-xl font-medium">
@@ -12,18 +12,15 @@ const Section_6 = () => {
         business address, select “No”
       </p>
       <div>
-        <p
-          className="p-2 border-solid border-2 border-gray-300 w-full mb-3"
-          name="country"
-        >
-          YES
-        </p>
-        <p
+        <select
+          required
           className="p-2 border-solid border-2 border-gray-300 w-full"
-          name="country"
+          {...register("interestedInProvidedAddress")}
         >
-          NO
-        </p>
+          <option value="Select Here">Select Here</option>
+          <option value="YES">YES</option>
+          <option value="NO">NO</option>
+        </select>
       </div>
     </section>
   );

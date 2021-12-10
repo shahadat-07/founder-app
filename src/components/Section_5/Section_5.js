@@ -21,6 +21,7 @@ const Section_5 = ({ register, errors }) => {
           <Country
             register={register}
             errors={errors}
+            width={"w-full"}
             className="physicalOperatingAddress"
           />
           <br />

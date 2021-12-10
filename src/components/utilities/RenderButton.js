@@ -6,8 +6,7 @@ const renderButton = (props) => {
   } else if (formStep === 11) {
     return (
       <button
-        onClick={completeFormStep}
-        type="button"
+        type="submit"
         className="mt-6 bg-green-600 text-white rounded px-6 py-3 w-full disabled:bg-gray-400 disabled:cursor-not-allowed"
       >
         Submit Data

@@ -87,6 +87,7 @@ const Section_3 = ({ register, errors }) => {
           <Country
             register={register}
             errors={errors}
+            width={"w-full"}
             className="residencyCountry"
           />
           <br />
