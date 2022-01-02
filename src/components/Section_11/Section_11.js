@@ -69,15 +69,15 @@ const Section_11 = ({ register, errors }) => {
         </div>
         <div className="w-full sm:w-1/2 px-3">
           <label
-            className="block  tracking-wide text-gray-700 text-xs font-bold mb-2"
+            className="block tracking-wide text-gray-700 text-xs font-bold mb-2"
             for="grid-last-name"
           >
-            State/Province*
+            Secretary*
           </label>
           <input
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
-            {...register("managerState", { required: true })}
+            {...register("companySecretary", { required: true })}
             type="text"
           />
           {errors.managerState && (

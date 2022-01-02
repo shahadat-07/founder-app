@@ -1,6 +1,6 @@
 const renderButton = (props) => {
   const { formStep, completeFormStep, isValid } = props;
-  console.log(isValid);
+  // console.log(isValid);
   if (formStep > 11) {
     return null;
   } else if (formStep === 11) {

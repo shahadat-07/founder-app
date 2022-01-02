@@ -124,7 +124,7 @@ const Section_3 = ({ register, errors }) => {
             required
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-md py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
             {...register("phoneNumber", { required: true })}
-            type="number"
+            type="tel"
           />
           {errors.phoneNumber && (
             <span className="text-red-600 font-medium text-sm mt-4">

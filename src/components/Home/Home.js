@@ -86,8 +86,9 @@ const Home = () => {
               <NumberOfShares register={register} errors={errors} />
             )}
             {formStep === 10 && (
-              <OwnerDetails register={register} errors={errors} watch={watch} />
+              <OwnerDetails register={register} errors={errors} />
             )}
+
             {formStep === 11 && (
               <CompanyManager register={register} errors={errors} />
             )}
