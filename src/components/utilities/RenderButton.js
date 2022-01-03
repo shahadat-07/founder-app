@@ -3,7 +3,7 @@ const renderButton = (props) => {
   // console.log(isValid);
   if (formStep > 11) {
     return null;
-  } else if (formStep === 11) {
+  } else if (formStep === 10) {
     return (
       <button
         type="submit"
