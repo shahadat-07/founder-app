@@ -80,7 +80,7 @@ const Section_11 = ({ register, errors }) => {
             {...register("companySecretary", { required: true })}
             type="text"
           />
-          {errors.managerState && (
+          {errors.companySecretary && (
             <span className="text-red-600 font-medium text-sm mt-4">
               This field is required
             </span>
