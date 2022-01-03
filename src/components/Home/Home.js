@@ -4,7 +4,6 @@ import { FaArrowLeft } from "react-icons/fa";
 import Logo from "../../assets/logo.png";
 import Congratulation from "../Congratulation/Congratulation";
 import WelcomeSection from "../Section_1/Section_1";
-import OwnerDetails from "../Section_10/Section_10";
 import CompanyManager from "../Section_11/Section_11";
 import ChooseState from "../Section_2/Section_2";
 import PersonalInformation from "../Section_3/Section_3";
@@ -85,14 +84,14 @@ const Home = () => {
             {formStep === 9 && (
               <NumberOfShares register={register} errors={errors} />
             )}
-            {formStep === 10 && (
+            {/* {formStep === 10 && (
               <OwnerDetails register={register} errors={errors} />
-            )}
+            )} */}
 
-            {formStep === 11 && (
+            {formStep === 10 && (
               <CompanyManager register={register} errors={errors} />
             )}
-            {formStep === 12 && <Congratulation />}
+            {formStep === 11 && <Congratulation />}
 
             <RenderButton
               isValid={isValid}
@@ -100,7 +99,7 @@ const Home = () => {
               completeFormStep={completeFormStep}
             />
           </form>
-          <pre>{JSON.stringify(watch(), null, 2)}</pre>
+          {/* <pre>{JSON.stringify(watch(), null, 2)}</pre> */}
         </div>
       </div>
     </div>

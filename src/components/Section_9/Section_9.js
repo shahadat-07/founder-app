@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import MyContext from "../../contexts/myContext";
-
+import OwnerDetails from "../Section_10/Section_10";
 const Section_9 = ({ register, formStep, errors }) => {
-  const [shares, setShares] = useState(4);
-  console.log("share", shares);
-  const qty = 5;
+  const [shares, setShares] = useState(1);
 
   return (
-    <MyContext.Provider value={qty}>
+    <>
       <section id="9" className="">
         <p className="text-center text-xl font-medium">
           The maximum number of shares a company is allowed to issue.
@@ -36,7 +33,20 @@ const Section_9 = ({ register, formStep, errors }) => {
           </select>
         </div>
       </section>
-    </MyContext.Provider>
+      <OwnerDetails register={register} errors={errors} shares={shares} />
+      <div>
+        <p className="font-medium">Is Shareholder 18 years old or over? </p>
+        <select
+          required
+          className="p-2 border-solid border-2 border-gray-300 w-full"
+          {...register("shareholderAgeIs18")}
+        >
+          <option value="Select Here">Select Here</option>
+          <option value="YES">YES</option>
+          <option value="NO">NO</option>
+        </select>
+      </div>
+    </>
   );
 };
 
